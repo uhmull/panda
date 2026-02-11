@@ -8,7 +8,24 @@ public class TargetedAd {
      String users = "";
     DataCollector dc = new DataCollector();
     dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
-    
+  String[] posts = dc.getPosts();
+  String[] targets = dc.getTargetWords();
+
+  for (String post : posts) {
+    if (post == null || post.trim().isEmpty()) continue;
+    String[] parts = post.split("\\s+", 2); 
+    String username = parts[0];
+    String content = parts.length > 1 ? parts[1].toLowerCase() : "";
+
+    for (String target : targets) {
+    if (target == null || target.trim().isEmpty()) continue;
+    if (content.indexOf(target.toLowerCase()) >= 0) {
+      users += username + " ";
+      break; 
+    }
+    }
+  }
+  dc.prepareAdvertisement(users.trim(), "Special offer on panda food!");
     /*  
      * TODO:
      * PREPARATION WORK
@@ -21,7 +38,6 @@ public class TargetedAd {
      *     generate your solution quicker and give you the ability to double check your work.
      * (3) Create a String variable to hold the names of all the user. (The first word of every post is 
      *     a person's username)
-    
      * (4) Compare each user's post to each target word. If a user mentions a target word, add their username to 
      *     the String of users. Separate usernames with a space. 
      *         Hint: You can use loops to look through each word. 
