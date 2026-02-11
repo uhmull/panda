@@ -6,6 +6,8 @@ public class TargetedAd {
   public static void main(String[] args)
   {
      String users = "";
+     int currentPost = 0;
+     
     DataCollector dc = new DataCollector();
     dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
   String[] posts = dc.getPosts();
@@ -24,6 +26,11 @@ public class TargetedAd {
       break; 
     }
     }
+    dc.getNextPost();
+    dc.getNextTargetWord();
+        if (content.contains(targetWords)){ 
+            System.out.println("Owner likely contains pet");
+        }
   }
   dc.prepareAdvertisement(users.trim(), "Special offer on panda food!");
     /*  
@@ -54,8 +61,6 @@ public class TargetedAd {
 
 
     /* your code here */
-    
-     
   }
 
 }
