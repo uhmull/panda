@@ -146,4 +146,9 @@ public class DataCollector
     for (String word : this.targetWords)
       System.out.println(word);
   }
+  public String getTargetWords()
+  {
+    for (String word : this.targetWords)
+      return word;
+  }
 }
