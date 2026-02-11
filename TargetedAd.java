@@ -5,6 +5,10 @@ public class TargetedAd {
 
   public static void main(String[] args)
   {
+     String users = "";
+    DataCollector dc = new DataCollector();
+    dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
+    
     /*  
      * TODO:
      * PREPARATION WORK
@@ -17,6 +21,7 @@ public class TargetedAd {
      *     generate your solution quicker and give you the ability to double check your work.
      * (3) Create a String variable to hold the names of all the user. (The first word of every post is 
      *     a person's username)
+    
      * (4) Compare each user's post to each target word. If a user mentions a target word, add their username to 
      *     the String of users. Separate usernames with a space. 
      *         Hint: You can use loops to look through each word. 
