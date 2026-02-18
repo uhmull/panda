@@ -11,7 +11,7 @@ public class TargetedAd {
     DataCollector dc = new DataCollector();
     dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
   String[] posts = dc.getPosts();
-  String[] targets = dc.getTargetWords();
+  String[] targets = dc.getTargetWords().split(" ");
 
   for (String post : posts) {
     if (post == null || post.trim().isEmpty()) continue;
@@ -19,18 +19,16 @@ public class TargetedAd {
     String username = parts[0];
     String content = parts.length > 1 ? parts[1].toLowerCase() : "";
 
-    for (String target : targets) {
+  for (String target : targets) {
     if (target == null || target.trim().isEmpty()) continue;
+    if (content.contains(target.toLowerCase())) {
+      System.out.println("The owner very likely has a pet panda!");
+    } 
     if (content.indexOf(target.toLowerCase()) >= 0) {
       users += username + " ";
       break; 
     }
-    }
-    dc.getNextPost();
-    dc.getNextTargetWord();
-        if (content.contains(targetWords)){ 
-            System.out.println("Owner likely contains pet");
-        }
+  }
   }
   dc.prepareAdvertisement(users.trim(), "Special offer on panda food!");
     /*  
